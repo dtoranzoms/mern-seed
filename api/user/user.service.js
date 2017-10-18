@@ -13,7 +13,14 @@ class UserService {
       .catch(err => cb('Unable to find user.'));
   }
 
+  findBy(condition, cb) {
+    User.find(condition)
+      .then(user => cb(null, user))
+      .catch(err => cb('Unable to find user.'));
+  }
+
   create(data, cb) {
+    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ ', data);
     let user = new User(data);
     user.save();
     return cb(null, user);

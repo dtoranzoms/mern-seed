@@ -1,5 +1,6 @@
 import { push } from 'react-router-redux';
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR } from './actionTypes';
+import loginService from '../services/loginService';
 
 function loginRequest () {
   return {
@@ -28,29 +29,21 @@ function loginError () {
   };
 }
 
-const loginUser = (user) => { 
-  //TODO: invoke API here for proper login, this is just a fake login,
-  //this should be done using a service like userService.
-  //It should return us a token so when can keep track of the user session.
-  return new Promise((resolve, reject) => {
-    setTimeout(function(){
-      if(user.username === 'admin' && user.password === '1234') {
-        resolve();
-      }
-      else {
-        reject();
-      }
-    }, 3000);
-  });
-};
-
-export function login(user) {
+export function login(formData) {
   return (dispatch, getState) => {
     dispatch(loginRequest());
-    return loginUser(user)
-      .then(() => {
-        dispatch(loginSuccess());
-        dispatch(push('/app/home'));
+    return loginService.login(formData)
+      .then(response => {
+        /*  console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!', response);
+          console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!', response.token);
+        if (response.status !== 200) {
+          dispatch(loginError());
+        }
+        else {*/
+          sessionStorage.setItem('token', response.token);
+          dispatch(loginSuccess());
+          dispatch(push('/app/home'));
+        //}
       })
       .catch(() => {
         dispatch(loginError());

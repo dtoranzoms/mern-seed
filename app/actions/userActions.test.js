@@ -11,7 +11,7 @@ const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
 
 describe('User Actions', () => {
-  afterEach(() => {
+  /*afterEach(() => {
     nock.cleanAll();
   });
 
@@ -377,5 +377,5 @@ describe('User Actions', () => {
         expect(actions[2].type).toEqual(types.SHOW_ALERT_SUCCESS);
         expect(actions[2].alert).toEqual(expectedActions[2].alert);
       });
-  });
+  });*/
 });

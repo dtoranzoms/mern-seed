@@ -4,7 +4,10 @@ import * as endpoints from './apiEndpoints';
 class UserService {
   static loadUsers() {
     const request = new Request(`${endpoints.BASE_URL}${endpoints.GET_USERS}`, {
-      method: 'GET'
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+      }
     });
 
     return fetch(request).then(response => response.json());
@@ -12,7 +15,10 @@ class UserService {
 
   static getUser(id) {
     const request = new Request(`${endpoints.BASE_URL}${endpoints.GET_USER}/${id}`, {
-      method: 'GET'
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+      }
     });
 
     return fetch(request).then(response => response.json());
@@ -22,7 +28,8 @@ class UserService {
     const request = new Request(`${endpoints.BASE_URL}${endpoints.POST_USER}`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${sessionStorage.getItem('token')}`
       },
       body: JSON.stringify({
         user: user
@@ -36,7 +43,8 @@ class UserService {
     const request = new Request(`${endpoints.BASE_URL}${endpoints.PUT_USER}/${user.id}`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${sessionStorage.getItem('token')}`
       },
       body: JSON.stringify({
         user: user
@@ -50,7 +58,8 @@ class UserService {
     const request = new Request(`${endpoints.BASE_URL}${endpoints.DELETE_USER}/${id}`, {
       method: 'DELETE',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${sessionStorage.getItem('token')}`
       }
     });
 

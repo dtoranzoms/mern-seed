@@ -15,8 +15,8 @@ class LoginPage extends Component {
     });
   }
 
-  handleLogin(user) {
-    this.props.actions.login(user);
+  handleLogin(formData) {
+    this.props.actions.login(formData);
   }
 
   render() {

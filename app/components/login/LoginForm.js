@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import Formsy from 'formsy-react';
-import { Input } from 'formsy-react-components';
+import { Input, Checkbox } from 'formsy-react-components';
 import autoBind from '../../lib/autoBind';
 
 class LoginForm extends React.Component {
@@ -51,6 +51,11 @@ class LoginForm extends React.Component {
             validations="minLength:4"
             validationError="Your password must be at least 4 characters long."
             placeholder="Your password goes here"
+          />
+          <Checkbox
+            name="signUp"
+            value={false}
+            label="Sign up"
           />
           {errorSection}
           <div>
