@@ -8,7 +8,7 @@ class App extends React.Component {
   render(){
     return (
       <div>
-        <Header/>
+        <Header showAllLinks={this.props.showAllHeaderLinks}/>
         <div className="container-fluid">
           {this.props.children}
         </div>
@@ -20,7 +20,14 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  children: PropTypes.object.isRequired
+  children: PropTypes.object.isRequired,
+  showAllHeaderLinks: PropTypes.bool.isRequired
 };
 
-export default connect()(App);
+function mapStatesToProps(state) {
+  return {
+    showAllHeaderLinks: state.reducers.login.loggedIn
+  };
+}
+
+export default connect(mapStatesToProps)(App);

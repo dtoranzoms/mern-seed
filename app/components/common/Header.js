@@ -1,7 +1,27 @@
 import React, { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
 
-const Header = () => {
+const Header = (props) => {
+  let links = [
+    { to: '/app/about', className: 'glyphicon glyphicon-exclamation-sign', label: 'About'}
+  ];
+  if(props.showAllLinks) {
+    links.unshift(
+      { to: '/app/users', className: 'glyphicon glyphicon-user', label: 'Users'}
+    );
+    links.unshift(
+      { to: '/', className: 'glyphicon glyphicon-home', label: 'Home'}
+    );
+  }
+
+  const linksSection = links.map((link, index) =>
+    (
+      <li key={index} >
+        <Link to={link.to} activeClassName="active"><i className={`${link.className}`}/> {link.label}</Link>
+      </li>
+    )
+  );
+
   return (
     <nav className="navbar navbar-default">
       <div className="container">
@@ -9,15 +29,7 @@ const Header = () => {
           <IndexLink to="/" activeClassName="navbar-brand" className="navbar-brand"><i className="glyphicon glyphicon-check" /> MERN seed</IndexLink>
         </div>
         <ul className="nav navbar-nav">
-          <li>
-            <IndexLink to="/" activeClassName="active"><i className="glyphicon glyphicon-home"/> Home</IndexLink>
-          </li>
-          <li>
-            <Link to="/app/users" activeClassName="active"><i className="glyphicon glyphicon-user"/> Users</Link>
-          </li>
-          <li>
-            <Link to="/app/about" activeClassName="active"><i className="glyphicon glyphicon-exclamation-sign"/> About</Link>
-          </li>
+          {linksSection}
         </ul>
       </div>
     </nav>
@@ -25,7 +37,7 @@ const Header = () => {
 };
 
 Header.propTypes = {
-  //
+  showAllLinks: PropTypes.bool.isRequired
 };
 
 export default Header;

@@ -5,6 +5,7 @@ import {
     Redirect
 } from "react-router";
 import App from "./components/App";
+import LoginPage from "./components/login/LoginPage";
 import HomePage from "./components/home/HomePage";
 import UsersPage from "./components/users/UsersPage";
 import UserAddPage from "./components/users/UserAddPage";
@@ -14,7 +15,8 @@ import NotFound from "./components/not_found/NotFound";
 export default (
     <Route path="/app" component={App}>
       <Redirect from="/" to="/app"/>
-      <IndexRoute component={HomePage}/>
+      <IndexRoute component={LoginPage}/>
+      <Route path="/app/home" component={HomePage}/>
       <Route path="/app/users" component={UsersPage}/>
       <Route path="/app/users/add" component={UserAddPage}/>
       <Route path="/app/users/:id/edit" component={UserEditPage}/>

@@ -10,6 +10,11 @@ export default {
     id: '',
     show: false
   },
+  login: {
+    loggingIn: false,
+    loggedIn: false,
+    invalidUser: false
+  },
   savingUser: false,
   userToDelete: '',
   users: [],
