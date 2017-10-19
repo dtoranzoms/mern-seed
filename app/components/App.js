@@ -8,7 +8,7 @@ class App extends React.Component {
   render(){
     return (
       <div>
-        <Header showAllLinks={this.props.showAllHeaderLinks}/>
+        <Header showRestrictedOptions={this.props.isUserAuthenticated}/>
         <div className="container-fluid">
           {this.props.children}
         </div>
@@ -21,12 +21,12 @@ class App extends React.Component {
 
 App.propTypes = {
   children: PropTypes.object.isRequired,
-  showAllHeaderLinks: PropTypes.bool.isRequired
+  isUserAuthenticated: PropTypes.bool.isRequired
 };
 
 function mapStatesToProps(state) {
   return {
-    showAllHeaderLinks: state.reducers.login.loggedIn
+    isUserAuthenticated: state.reducers.login.loggedIn
   };
 }
 

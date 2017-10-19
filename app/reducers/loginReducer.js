@@ -7,19 +7,19 @@ export const login = (state = initialState.login, action) => {
       return Object.assign(
         {},
         state,
-        { loggingIn: action.payload.loggingIn }
+        { loggingIn: action.loggingIn }
       );
     case LOGIN_SUCCESS:
       return Object.assign(
         {},
         state,
-        { loggingIn: action.payload.loggingIn, loggedIn: true }
+        { loggingIn: action.loggingIn, loggedIn: true }
       );
     case LOGIN_ERROR:
       return Object.assign(
         {},
         state,
-        { loggingIn: action.payload.loggingIn, invalidUser: true }
+        { loggingIn: action.loggingIn, invalidUser: true }
       );
 
     default:

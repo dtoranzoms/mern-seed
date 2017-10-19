@@ -6,7 +6,7 @@ class UserService {
     const request = new Request(`${endpoints.BASE_URL}${endpoints.GET_USERS}`, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     });
 
@@ -17,7 +17,7 @@ class UserService {
     const request = new Request(`${endpoints.BASE_URL}${endpoints.GET_USER}/${id}`, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     });
 
@@ -29,7 +29,7 @@ class UserService {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       },
       body: JSON.stringify({
         user: user
@@ -44,7 +44,7 @@ class UserService {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       },
       body: JSON.stringify({
         user: user
@@ -59,7 +59,7 @@ class UserService {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     });
 

@@ -5,7 +5,7 @@ const Header = (props) => {
   let links = [
     { to: '/app/about', className: 'glyphicon glyphicon-exclamation-sign', label: 'About'}
   ];
-  if(props.showAllLinks) {
+  if(props.showRestrictedOptions) {
     links.unshift(
       { to: '/app/users', className: 'glyphicon glyphicon-user', label: 'Users'}
     );
@@ -37,7 +37,7 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  showAllLinks: PropTypes.bool.isRequired
+  showRestrictedOptions: PropTypes.bool.isRequired
 };
 
 export default Header;

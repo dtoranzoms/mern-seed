@@ -4,8 +4,8 @@ import { Input, Checkbox } from 'formsy-react-components';
 import autoBind from '../../lib/autoBind';
 
 class LoginForm extends React.Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
 
     this.state = {
       canSubmit: false
