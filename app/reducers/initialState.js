@@ -10,10 +10,12 @@ export default {
     id: '',
     show: false
   },
-  login: {
+  auth: {
     loggingIn: false,
     loggedIn: false,
-    invalidUser: false
+    invalidUser: false,
+    signingUp: false,
+    signUpError: false
   },
   savingUser: false,
   userToDelete: '',

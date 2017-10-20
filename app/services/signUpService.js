@@ -1,16 +1,16 @@
 import fetch from 'isomorphic-fetch';
 import * as endpoints from './apiEndpoints';
 
-class LoginService {
+class SignUpService {
 
-  static login(formData) {
-    const request = new Request(`${endpoints.BASE_URL}${endpoints.LOGIN}`, {
+  static signUp(formData) {
+    const request = new Request(`${endpoints.BASE_URL}${endpoints.SIGNUP}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        user: { username: formData.username, password: formData.password }
+        user: { username: formData.username, email: formData.email, password: formData.password }
       })
     });
 
@@ -24,4 +24,4 @@ class LoginService {
 
 }
 
-export default LoginService;
+export default SignUpService;

@@ -20,7 +20,6 @@ class UserService {
   }
 
   create(data, cb) {
-    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ ', data);
     let user = new User(data);
     user.save();
     return cb(null, user);

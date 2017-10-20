@@ -7,12 +7,16 @@ import LoginForm from './LoginForm';
 import styles from '../../styles/styles.css';
 
 class LoginPage extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
 
     autoBind(this, {
       bindOnly: ['handleLogin']
     });
+  }
+
+  componentWillUnmount() {
+    this.props.actions.clearInvalidUser();
   }
 
   handleLogin(formData) {
@@ -41,8 +45,8 @@ LoginPage.propTypes = {
 
 function mapStatesToProps(state) {
   return {
-    loggingIn: state.reducers.login.loggingIn,
-    invalidUser: state.reducers.login.invalidUser
+    loggingIn: state.reducers.auth.loggingIn,
+    invalidUser: state.reducers.auth.invalidUser
   };
 }
 

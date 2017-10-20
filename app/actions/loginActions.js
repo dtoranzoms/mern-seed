@@ -1,5 +1,5 @@
 import { push } from 'react-router-redux';
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR } from './actionTypes';
+import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR, LOGIN_CLEAR_INVALID_USER } from './actionTypes';
 import loginService from '../services/loginService';
 
 function loginRequest () {
@@ -20,6 +20,18 @@ function loginError () {
   return {
     type: LOGIN_ERROR,
     loggingIn: false
+  };
+}
+
+function loginClearInvalidUser() {
+  return {
+    type: LOGIN_CLEAR_INVALID_USER
+  };
+}
+
+export function clearInvalidUser(formData) {
+  return (dispatch, getState) => {
+    dispatch(loginClearInvalidUser());
   };
 }
 

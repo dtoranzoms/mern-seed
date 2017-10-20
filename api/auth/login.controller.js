@@ -14,13 +14,6 @@ class LoginController {
 
       //If there's no user, then we get an empty array
       if (foundUser.length === 0) {
-        if (req.body.signUp) {
-          UserService.create({name: user.username, email: 'fake@fake.com', password: user.password}, (err, foundUser) => {
-            if (err) return next(err);
-
-            res.status(200).json({token});
-          });
-        }
         res.status(404).json({});
       }
       else {

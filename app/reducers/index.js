@@ -7,11 +7,11 @@ import {
 import { combineReducers } from 'redux';
 import { modal } from './modalReducer';
 import { alert } from './alertReducer';
-import { login } from './loginReducer';
+import { auth } from './authReducer';
 const rootReducer = combineReducers({
     modal,
     alert,
-    login,
+    auth,
     users,
     user,
     savingUser,

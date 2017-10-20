@@ -26,7 +26,7 @@ App.propTypes = {
 
 function mapStatesToProps(state) {
   return {
-    isUserAuthenticated: state.reducers.login.loggedIn
+    isUserAuthenticated: state.reducers.auth.loggedIn
   };
 }
 

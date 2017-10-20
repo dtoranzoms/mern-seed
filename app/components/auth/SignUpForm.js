@@ -37,11 +37,14 @@ class LoginForm extends React.Component {
   }
 
   render(){
-    const errorSection = (this.props.invalidUser)?(<p>Invalid username or password.</p>):null;
+    const errorSection = (this.props.signUpError)?(<p>There was an error while signing-up.</p>):null;
     return (
       <div>
         <Formsy.Form ref="form" className="horizontal" onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
           <Input formNoValidate required name="username" label="Username" placeholder="Your username goes here" value=""/>
+          <Input formNoValidate required name="email" label="Email" placeholder="Email" value=""
+            validations="isEmail"
+            validationError="This is not a valid email" />
           <Input
             required
             name="password"
@@ -52,16 +55,11 @@ class LoginForm extends React.Component {
             validationError="Your password must be at least 4 characters long."
             placeholder="Your password goes here"
           />
-          <Checkbox
-            name="signUp"
-            value={false}
-            label="Sign up"
-          />
           {errorSection}
           <div>
             <button type="button" onClick={this.resetForm}>Reset</button>
             &nbsp;
-            <input type="submit" disabled={!this.state.canSubmit} value={this.props.loggingIn ? 'Logging-in... ' : 'Login'} />
+            <input type="submit" disabled={!this.state.canSubmit} value={this.props.signingUp ? 'signing-up... ' : 'Sign up'} />
           </div>
         </Formsy.Form>
       </div>
@@ -71,8 +69,8 @@ class LoginForm extends React.Component {
 
 LoginForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  loggingIn: PropTypes.bool.isRequired,
-  invalidUser: PropTypes.bool.isRequired
+  signingUp: PropTypes.bool.isRequired,
+  signUpError: PropTypes.bool.isRequired
 };
 
 export default LoginForm;
