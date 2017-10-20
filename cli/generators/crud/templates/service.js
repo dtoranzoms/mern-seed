@@ -13,6 +13,12 @@ class <%= ucName %>Service {
       .catch(err => cb('Unable to find <%= name %>.'));
   }
 
+  findBy(condition, cb) {
+    <%= ucName %>.find(condition)
+      .then(<%= name %> => cb(null, <%= name %>))
+      .catch(err => cb('Unable to find <%= name %>.'));
+  }
+
   create(data, cb) {
     let <%= name %> = new <%= ucName %>(data);
     <%= name %>.save();
