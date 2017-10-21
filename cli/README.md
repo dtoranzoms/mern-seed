@@ -145,6 +145,21 @@ Updates:
 ```bash
 yo mern:crud Car --force
 ```
+
+### Auth
+
+It adds login and sign-up functionalities to the basic application using JWT.
+
+**It will override many files of the application, so it is important that if you want to add authentication to your app, you run this sub-generator before you modify any files from the basic structure.**
+
+You can pass a `--force` param to skip being asked if you are sure to override every already existing file.
+
+Example:
+
+```bash
+yo mern:auth --force
+```
+
 ## License
 
 MIT © [Making Sense](https://makingsense.com)
