@@ -160,6 +160,8 @@ Example:
 yo mern:auth --force
 ```
 
+**This sub-generator was design to be executed only once per application.**
+
 ## License
 
 MIT © [Making Sense](https://makingsense.com)
