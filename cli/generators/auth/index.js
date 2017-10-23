@@ -1,15 +1,12 @@
 var LoginGenerator = require('./loginGenerator');
-const acorn = require('acorn-jsx');
-const escodegen = require('escodegen-wallaby');
 
 module.exports = class extends LoginGenerator {
   constructor(args, opts) {
     super(args, opts);
   }
 
-  copyFiles() {
+  crateFiles() {
 
-    //The following files are new files
     this.fs.copy(
       this.templatePath('apiAuthIndex.js'),
       this.destinationPath("api/auth/index.js")
@@ -80,81 +77,27 @@ module.exports = class extends LoginGenerator {
       this.destinationPath("app/styles/styles.css")
     );
 
+  }
+
+  modifyFiles() {
+
+    this.modifyAddApiRoutesFile(this.destinationPath('api/addApiRoutes.js'));
+    this.modifyServerFile(this.destinationPath('api/server.js'));
+    this.modifyUserSchemaFile(this.destinationPath('api/user/user.schema.js'));
+
+    //TODO: generate the rest of the files. The list is:
     //The following files replace the ones already in the project
-    this.fs.copy(
-      this.templatePath('addApiRoutes.js'),
-      this.destinationPath("api/addApiRoutes.js")
-    );
-
-    this.fs.copy(
-      this.templatePath('addApiRoutes.js'),
-      this.destinationPath("api/addApiRoutes.js")
-    );
-
-    this.fs.copy(
-      this.templatePath('server.js'),
-      this.destinationPath("api/server.js")
-    );
-
-    this.fs.copy(
-      this.templatePath('userSchema.js'),
-      this.destinationPath("api/user/user.schema.js")
-    );
-
-    this.fs.copy(
-      this.templatePath('apiUserService.js'),
-      this.destinationPath("api/user/user.service.js")
-    );
-
-    this.fs.copy(
-      this.templatePath('actionTypes.js'),
-      this.destinationPath("app/actions/actionTypes.js")
-    );
-
-    this.fs.copy(
-      this.templatePath('app.js'),
-      this.destinationPath("app/components/App.js")
-    );
-
-    this.fs.copy(
-      this.templatePath('header.js'),
-      this.destinationPath("app/components/common/Header.js")
-    );
-
-    this.fs.copy(
-      this.templatePath('userForm.js'),
-      this.destinationPath("app/components/users/UserForm.js")
-    );
-
-    this.fs.copy(
-      this.templatePath('appReducersIndex.js'),
-      this.destinationPath("app/reducers/index.js")
-    );
-
-    this.fs.copy(
-      this.templatePath('initialState.js'),
-      this.destinationPath("app/reducers/initialState.js")
-    );
-
-    this.fs.copy(
-      this.templatePath('routes.js'),
-      this.destinationPath("app/routes.js")
-    );
-
-    this.fs.copy(
-      this.templatePath('apiEndpoints.js'),
-      this.destinationPath("app/services/apiEndpoints.js")
-    );
-
-    this.fs.copy(
-      this.templatePath('appUserService.js'),
-      this.destinationPath("app/services/userService.js")
-    );
-
-    this.fs.copy(
-      this.templatePath('package.json'),
-      this.destinationPath("package.json")
-    );
+    //  -> api/user/user.service.js
+    //  -> app/actions/actionTypes.js
+    //  -> app/components/App.js
+    //  -> app/components/common/Header.js
+    //  -> app/components/users/UserForm.js
+    //  -> app/reducers/index.js
+    //  -> app/reducers/initialState.js
+    //  -> app/routes.js
+    //  -> app/services/apiEndpoints.js
+    //  -> app/services/userService.js
+    //  -> package.json
 
   }
 
